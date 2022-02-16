@@ -33,7 +33,7 @@
                     <div class="flex-container">
                         <span>Income</span>
                         <!-- each Input  -->
-                        <input type="text" placeholder="0" class="form-control w-50 ms-4 ">
+                        <input id="income" type="text" placeholder="0" class="form-control w-50 ms-4 ">
                     </div>
                 </div>
 
@@ -42,25 +42,27 @@
                     <h4 class="fw-bold mb-3 "> Expenses </h4>
 
                     <!-- each Input  -->
-                    <div class="flex-container ms-3 mb-3">
-                        <span>Food</span>
-                        <input type="text" placeholder="0" class="form-control w-50 ms-4 ">
-                    </div>
-                    <div class="flex-container ms-3 mb-3">
-                        <span>Rent</span>
-                        <input type="text" placeholder="0" class="form-control w-50 ms-4 ">
-                    </div>
-                    <div class="flex-container ms-3 mb-3">
-                        <span>Cloth</span>
-                        <input type="text" placeholder="0" class="form-control w-50 ms-4 ">
-                    </div>
+                    <form action="">
+                        <div class="flex-container ms-3 mb-3">
+                            <span>Food</span>
+                            <input id="food" required type="text" placeholder="0" class="form-control w-50 ms-4 ">
+                        </div>
+                        <div class="flex-container ms-3 mb-3">
+                            <span>Rent</span>
+                            <input id="rent" required type="text" placeholder="0" class="form-control w-50 ms-4 ">
+                        </div>
+                        <div class="flex-container ms-3 mb-3">
+                            <span>Cloth</span>
+                            <input id="cloth" required type="text" placeholder="0" class="form-control w-50 ms-4 ">
+                        </div>
+                    </form>
                     <!-- each Input End -->
 
                 </div>
 
-                <button class="btn btn-primary">Calculator</button>
-                <p class="pt-4">Total Expenses: <span>0</span> </p>
-                <p>Balance: <span>0</span></p>
+                <button onclick="calculate()" class="btn btn-primary">Calculator</button>
+                <p class="pt-4">Total Expenses: <span id="totalExpenses">0</span> </p>
+                <p>Balance: <span id="balance">0</span></p>
 
                 <!-- Save Area -->
                 <div class=" save-area mt-5 ">
