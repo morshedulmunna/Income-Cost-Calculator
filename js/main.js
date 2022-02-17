@@ -69,6 +69,8 @@ function saveAmount() {
   //==error Handle
   if (duebalance < saveings) {
     alert("Your balance not Enough to Save");
+  } else if (savePersentage < 0) {
+    alert("You can't input Negative Number");
   }
 }
 
