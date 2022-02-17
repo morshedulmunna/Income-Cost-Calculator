@@ -3,11 +3,13 @@ const food = document.getElementById("food");
 const rent = document.getElementById("rent");
 const cloth = document.getElementById("cloth");
 const save = document.getElementById("save");
+
 const savingAccount = document.getElementById("savingAccount");
 const totalExpenses = document.getElementById("totalExpenses");
 const balance = document.getElementById("balance");
 const remainingBalance = document.getElementById("remainingBalance");
 
+//===
 function calculate() {
   let incomeBlance = parseFloat(income.value);
   let foodCost = parseFloat(food.value);
@@ -15,7 +17,7 @@ function calculate() {
   let clothCost = parseFloat(cloth.value);
   let totalCost = foodCost + rentCost + clothCost;
 
-  errorCheck = errorHandle(
+  let errorCheck = errorHandle(
     incomeBlance,
     foodCost,
     rentCost,
@@ -77,7 +79,7 @@ function saveAmount() {
   saveings = result.toFixed(2);
   remainingTotalBalance = duebalance - saveings;
 
-  errorCheck = saveError(duebalance, saveings, savePersentage);
+  let errorCheck = saveError(duebalance, saveings, savePersentage);
   if (errorCheck == true) {
     savingAccount.innerText = saveings;
     remainingBalance.innerText = remainingTotalBalance.toFixed(2);
