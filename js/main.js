@@ -9,8 +9,8 @@ const totalExpenses = document.getElementById("totalExpenses");
 const balance = document.getElementById("balance");
 const remainingBalance = document.getElementById("remainingBalance");
 
-//===
-function calculate() {
+//===Expenses Balance Calculate Funtion ======
+function expensesBalanceCalculate() {
   let incomeBlance = parseFloat(income.value);
   let foodCost = parseFloat(food.value);
   let rentCost = parseFloat(rent.value);
@@ -68,17 +68,24 @@ function valueEmpty() {
 
 //
 //===Saveing balance & Remaining Balance calculation
-function saveAmount() {
+function savingRemainingBalance() {
   let incomeBlance = parseFloat(income.value);
   let savePersentage = parseInt(save.value);
   let duebalance = parseFloat(balance.innerText);
+
+  console.log(incomeBlance);
 
   percentageResult = savePersentage / 100;
   result = incomeBlance * percentageResult;
   saveings = result.toFixed(2);
   remainingTotalBalance = duebalance - saveings;
 
-  let errorCheck = saveError(duebalance, saveings, savePersentage);
+  let errorCheck = saveError(
+    duebalance,
+    saveings,
+    savePersentage,
+    incomeBlance
+  );
   if (errorCheck == true) {
     savingAccount.innerText = saveings;
     remainingBalance.innerText = remainingTotalBalance.toFixed(2);
@@ -110,13 +117,16 @@ function errorHandle(incomeBlance, foodCost, rentCost, clothCost, totalCost) {
 }
 
 // Save Ammout And remaing Ammout Error Handle Function
-function saveError(duebalance, saveings, savePersentage) {
+function saveError(duebalance, saveings, savePersentage, incomeBlance) {
   //==error Handle
   if (duebalance < saveings) {
     alert("Your balance not Enough to Save");
     return false;
   } else if (savePersentage < 0 || isNaN(savePersentage)) {
     alert("You can't input Negative Number or String ");
+    return false;
+  } else if (isNaN(incomeBlance)) {
+    alert("Please Input income Balance First");
     return false;
   }
   return true;
