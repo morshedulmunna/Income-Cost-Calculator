@@ -126,7 +126,7 @@ function saveError(duebalance, saveings, savePersentage, incomeBlance) {
     alert("You can't input Negative Number or String ");
     return false;
   } else if (isNaN(incomeBlance)) {
-    alert("Please Input income Balance First");
+    alert("Please Calculate Total Expenses Balance First");
     return false;
   }
   return true;
