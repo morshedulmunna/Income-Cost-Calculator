@@ -15,60 +15,50 @@ function calculate() {
   let clothCost = parseFloat(cloth.value);
   let totalCost = foodCost + rentCost + clothCost;
 
-  //==error Handleing to Empty Input
-  /*  if (
-    (isNaN(incomeBlance) || incomeBlance < 0,
-    isNaN(foodCost) || foodCost < 0,
-    isNaN(rentCost) || rentCost < 0,
-    isNaN(clothCost) || clothCost < 0)
-  ) {
-    alert("Please enter Positive Number Only");
-    inputEmpty();
-    return false;
-  } */
+  // Error Handle
+  errorHandle();
   //==Calculate total Expenses Cost
-  totalExpenses.innerText = totalCost;
+  totalExpenses.innerText = totalCost.toFixed(2);
 
   //==total Balance after expenses
-  balance.innerText = incomeBlance - totalCost;
-  inputEmpty();
+  let balanceResult = incomeBlance - totalCost;
+  balance.innerText = balanceResult.toFixed(2);
 }
-//==set value Empty after Click
-function inputEmpty() {
-  totalExpensesValue = "0";
-  dueBalance = "0";
-}
+
 //==When Focused Input Box then Input Value is Empty Event
 income.addEventListener("focus", () => {
   income.value = "";
+  valueEmpty();
+});
+food.addEventListener("focus", () => {
+  food.value = "";
+  valueEmpty();
+});
+rent.addEventListener("focus", () => {
+  rent.value = "";
+  valueEmpty();
+});
+cloth.addEventListener("focus", () => {
+  cloth.value = "";
+  valueEmpty();
+});
+save.addEventListener("focus", () => {
+  save.value = "";
+  savingAccount.innerText = "0";
+  remainingBalance.innerText = "0";
+});
+// When is focused in input result set 0
+function valueEmpty() {
   totalExpenses.innerText = "0";
   balance.innerText = "0";
   savingAccount.innerText = "0";
   remainingBalance.innerText = "0";
-  food.value = "";
-  rent.value = "";
-  cloth.value = "";
-  save.value = "";
-});
-food.addEventListener("focus", () => {
-  food.value = "";
-});
-rent.addEventListener("focus", () => {
-  rent.value = "";
-});
-cloth.addEventListener("focus", () => {
-  cloth.value = "";
-});
-save.addEventListener("focus", () => {
-  save.value = "";
-});
-
+}
 //===Saveing balance & Remaining Balance calculate
 function saveAmount() {
   let incomeBlance = parseFloat(income.value);
   let savePersentage = parseInt(save.value);
   let duebalance = parseFloat(balance.innerText);
-  //==error Handle
 
   percentageResult = savePersentage / 100;
   result = incomeBlance * percentageResult;
@@ -76,4 +66,28 @@ function saveAmount() {
   savingAccount.innerText = saveings;
   remainingTotalBalance = duebalance - saveings;
   remainingBalance.innerText = remainingTotalBalance.toFixed(2);
+  //==error Handle
+  if (duebalance < saveings) {
+    alert("Your balance not Enough to Save");
+  }
+}
+
+function errorHandle() {
+  let incomeBlance = parseFloat(income.value);
+  let foodCost = parseFloat(food.value);
+  let rentCost = parseFloat(rent.value);
+  let clothCost = parseFloat(cloth.value);
+  let totalCost = foodCost + rentCost + clothCost;
+  //==error Handleing to Empty Input
+  if (incomeBlance < 0 || isNaN(incomeBlance)) {
+    alert("Please Inter only Positive Number");
+  } else if (foodCost < 0 || isNaN(foodCost)) {
+    alert("Please Inter only Positive Number");
+  } else if (rentCost < 0 || isNaN(rentCost)) {
+    alert("Please Inter only Positive Number");
+  } else if (clothCost < 0 || isNaN(clothCost)) {
+    alert("Please Inter only Positive Number");
+  } else if (incomeBlance < totalCost) {
+    alert("Your Income Amount not Enough");
+  }
 }
