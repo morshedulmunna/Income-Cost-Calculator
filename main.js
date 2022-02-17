@@ -6,6 +6,7 @@ const save = document.getElementById("save");
 const savingAccount = document.getElementById("savingAccount");
 const totalExpenses = document.getElementById("totalExpenses");
 const balance = document.getElementById("balance");
+const remainingBalance = document.getElementById("remainingBalance");
 
 function calculate() {
   let incomeBlance = parseFloat(income.value);
@@ -32,28 +33,47 @@ function calculate() {
   balance.innerText = incomeBlance - totalCost;
   inputEmpty();
 }
-
 //==set value Empty after Click
 function inputEmpty() {
-  food.value = "";
-  rent.value = "";
-  cloth.value = "";
   totalExpensesValue = "0";
   dueBalance = "0";
 }
+//==When Focused Input Box then Input Value is Empty Event
 income.addEventListener("focus", () => {
   income.value = "";
+  totalExpenses.innerText = "0";
+  balance.innerText = "0";
+  savingAccount.innerText = "0";
+  remainingBalance.innerText = "0";
+  food.value = "";
+  rent.value = "";
+  cloth.value = "";
+  save.value = "";
+});
+food.addEventListener("focus", () => {
+  food.value = "";
+});
+rent.addEventListener("focus", () => {
+  rent.value = "";
+});
+cloth.addEventListener("focus", () => {
+  cloth.value = "";
+});
+save.addEventListener("focus", () => {
+  save.value = "";
 });
 
-//===Saveing balance calculate
+//===Saveing balance & Remaining Balance calculate
 function saveAmount() {
   let incomeBlance = parseFloat(income.value);
   let savePersentage = parseInt(save.value);
-
+  let duebalance = parseFloat(balance.innerText);
   //==error Handle
 
   percentageResult = savePersentage / 100;
   result = incomeBlance * percentageResult;
   saveings = result.toFixed(2);
   savingAccount.innerText = saveings;
+  remainingTotalBalance = duebalance - saveings;
+  remainingBalance.innerText = remainingTotalBalance.toFixed(2);
 }
