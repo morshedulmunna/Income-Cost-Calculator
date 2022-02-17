@@ -64,7 +64,6 @@ function valueEmpty() {
   savingAccount.innerText = "0";
   remainingBalance.innerText = "0";
 }
-
 //
 
 //
@@ -92,16 +91,16 @@ function saveAmount() {
 function errorHandle(incomeBlance, foodCost, rentCost, clothCost, totalCost) {
   //==error Handleing to Empty Input
   if (incomeBlance < 0 || isNaN(incomeBlance)) {
-    alert("Please Inter only Positive Number");
+    alert("Please Make Sure only Positive Number");
     return false;
   } else if (foodCost < 0 || isNaN(foodCost)) {
-    alert("Please Inter only Positive Number");
+    alert("Please Make Sure only Positive Number");
     return false;
   } else if (rentCost < 0 || isNaN(rentCost)) {
-    alert("Please Inter only Positive Number");
+    alert("Please Make Sure only Positive Number");
     return false;
   } else if (clothCost < 0 || isNaN(clothCost)) {
-    alert("Please Inter only Positive Number");
+    alert("Please Make Sure only Positive Number");
     return false;
   } else if (incomeBlance < totalCost) {
     alert("Your Income Amount not Enough");
